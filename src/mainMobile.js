@@ -13,7 +13,7 @@ import { Button,Swipe, SwipeItem,Image as VanImage } from 'vant';
 import { Tabbar,TabbarItem,NavBar,Grid, GridItem,Col, Row,Tab,Tabs,PullRefresh,List,Cell,Sticky,Icon,ImagePreview } from 'vant';
 import { ActionSheet,Uploader,Form,Field,CellGroup,Toast,Dialog,Popup,Search,SwipeCell,TextEllipsis,BackTop,DropdownMenu,
     DropdownItem,Switch } from 'vant';
-import { Calendar,Tag } from 'vant';
+import { Calendar,Tag,Rate,RadioGroup, Radio,Stepper } from 'vant';
 
 // 定义特性标志
 window.__VUE_PROD_DEVTOOLS__ = false;
@@ -28,7 +28,7 @@ app.use(Tabbar).use(NavBar).use(TabbarItem).use(Grid).use(GridItem).use(Col)
     .use(Row).use(Tab).use(Tabs).use(PullRefresh).use(List).use(Cell).use(Sticky).use(Icon).use(ImagePreview);
 app.use(ActionSheet).use(Uploader).use(Form).use(Field).use(CellGroup).use(Toast).use(Dialog).use(Popup)
     .use(Search).use(SwipeCell).use(TextEllipsis).use(BackTop).use(DropdownMenu).use(DropdownItem).use(Switch);
-app.use(Calendar).use(Tag);
+app.use(Calendar).use(Tag).use(Rate).use(RadioGroup).use(Radio).use(Stepper);
 app.component('font-awesome-icon',FontAwesomeIcon);
 
 app.mount('#app');

@@ -45,14 +45,15 @@
                       src="@/assets/img/file.png"
                       v-else
                   />
-                  <van-text-ellipsis expand-text="展开" collapse-text="收起" :content="file.fileName" rows="1" style="margin-left: 1rem;margin-right: 0.5rem;max-width: 10rem"/>
+                  <van-text-ellipsis expand-text="展开" collapse-text="收起" :content="file.fileName" rows="1"
+                                     style="margin-left: 1rem;margin-right: 0.5rem;max-width: 10rem"/>
                   <van-tag plain type="primary" style="font-size: 10px;">
                     <van-text-ellipsis :content="file.fileType" rows="1" style="max-width: 4rem"/>
                   </van-tag>
                 </div>
               </template>
               <template #right-icon>
-                <a :href="file.fileType" :download="file.fileName">
+                <a :href="file.fileUrl" :download="file.fileName">
                   <font-awesome-icon icon="arrow-circle-down" :style="{color:'#07c160',fontSize:'1.2rem',paddingRight:'1rem'}" />
                 </a>
               </template>

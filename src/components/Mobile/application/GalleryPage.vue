@@ -1,27 +1,27 @@
 <template>
   <div>
-  <van-search v-model="searchKey" shape="round" placeholder="请输入相册关键词" @search="onSearch"/>
-  <van-image-preview />
-  <div style="padding-bottom: 3rem;margin-top: 0.3rem">
-    <van-pull-refresh v-model="refreshing" @refresh="onRefresh" style="min-height: 30rem;">
-      <van-list
-          v-model:loading="loading"
-          v-model:error="error"
-          :finished="finished"
-          finished-text="没有更多了"
-          error-text="请求失败，点击重新加载"
-          @load="onLoad"
-      >
-        <van-grid :border="false" :column-num="3"  style="padding: 0px">
-          <van-grid-item v-for="gallery in galleryList" :key="gallery">
-            <van-image :src="gallery.fileUrl" fit="cover" @click="showImage(gallery.fileUrl)" style="width: 100%;height: 8rem"
-                       @touchstart="handleTouchStart(gallery.galleryId,gallery.fileId)" @touchend="handleTouchEnd"/>
-          </van-grid-item>
-        </van-grid>
-      </van-list>
-    </van-pull-refresh>
-    <van-action-sheet v-model:show="showMenu" cancel-text="取消" :actions="actions" @select="onSelect" />
-  </div>
+    <van-search v-model="searchKey" shape="round" placeholder="请输入相册关键词" @search="onSearch"/>
+    <van-image-preview />
+    <div style="padding-bottom: 3rem;margin-top: 0.3rem">
+      <van-pull-refresh v-model="refreshing" @refresh="onRefresh" style="min-height: 30rem;">
+        <van-list
+            v-model:loading="loading"
+            v-model:error="error"
+            :finished="finished"
+            finished-text="没有更多了"
+            error-text="请求失败，点击重新加载"
+            @load="onLoad"
+        >
+          <van-grid :border="false" :column-num="3"  style="padding: 0px">
+            <van-grid-item v-for="gallery in galleryList" :key="gallery">
+              <van-image :src="gallery.fileUrl" fit="cover" @click="showImage(gallery.fileUrl)" style="width: 100%;height: 8rem"
+                         @touchstart="handleTouchStart(gallery.galleryId,gallery.fileId)" @touchend="handleTouchEnd"/>
+            </van-grid-item>
+          </van-grid>
+        </van-list>
+      </van-pull-refresh>
+      <van-action-sheet v-model:show="showMenu" cancel-text="取消" :actions="actions" @select="onSelect" />
+    </div>
   </div>
 </template>
 
@@ -78,6 +78,7 @@ export default {
             this.loading = false;
             this.refreshing = false;
             this.error = true;
+            showFailToast(error.msg);
             console.error(error);
           })
     },

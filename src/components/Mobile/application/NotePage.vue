@@ -26,8 +26,8 @@
               </template>
             </van-cell>
           <template #right>
-            <van-button text="编辑" type="success" @click="this.$router.push({path:'/Mobile/Application/Edit/Note',query:{noteId:note.noteId}});"/>
-            <van-button text="删除" type="danger" @click="deleteNote(note.noteId)"/>
+            <van-button style="height: 100%;" text="编辑" type="success" @click="this.$router.push({path:'/Mobile/Application/Edit/Note',query:{noteId:note.noteId}});"/>
+            <van-button style="height: 100%;" text="删除" type="danger" @click="deleteNote(note.noteId)"/>
           </template>
         </van-swipe-cell>
       </van-list>
@@ -79,6 +79,7 @@ export default {
             this.loading = false;
             this.refreshing = false;
             this.error = true;
+            showFailToast(error.msg);
             console.error(error);
           })
     },
