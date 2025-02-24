@@ -1,5 +1,5 @@
 <template>
-  <van-form @submit="onSubmit" style="margin-top: 1rem">
+  <van-form @submit="onSubmit" style="margin-top: 1rem" :readonly="readOnly === 'true'">
     <van-cell-group inset>
       <van-field
           v-model="title"
@@ -73,12 +73,12 @@
       <van-field name="uploader" label="日记图片" required :rules="[{ required: true, message: '请选择图片' }]">
         <template #input>
           <van-uploader v-model="fileUrl" multiple :max-count="1" :after-read="afterRead"
-                        :readonly="imgReadonly" :deletable="imgReadonly == false" />
+                        :readonly="readOnly === 'true'" :deletable="readOnly === 'false' && (diaryId === undefined || diaryId === '')" />
         </template>
       </van-field>
     </van-cell-group>
     <div style="margin: 16px;">
-      <van-button round block type="primary" native-type="submit">
+      <van-button round block type="primary" native-type="submit" :disabled="readOnly === 'true'">
         提交
       </van-button>
     </div>
@@ -104,7 +104,7 @@ export default {
       fileUrl : ref([]),
       uploadFile : ref(''),
       diaryId : ref(this.$route.query.diaryId),
-      imgReadonly : ref(false),
+      readOnly : ref(this.$route.query.readOnly),
     }
   },methods : {
     onSubmit(values){

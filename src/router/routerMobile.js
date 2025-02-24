@@ -12,6 +12,9 @@ import FileEditPage from '@/components/Mobile/application/edit/FileEditPage.vue'
 import MultimediaPage from '@/components/Mobile/MultimediaPage.vue';
 import AudioPage from '@/components/Mobile/multimedia/AudioPage.vue';
 import VideoPage from '@/components/Mobile/multimedia/VideoPage.vue';
+import AudioEditPage from '@/components/Mobile/multimedia/edit/AudioEditPage.vue';
+import VideoEditPage from '@/components/Mobile/multimedia/edit/VideoEditPage.vue';
+import VideoDetailPage from '@/components/Mobile/multimedia/detail/VideoDetailPage.vue';
 
 const routerMobile = createRouter({
     history : createWebHistory(process.env.BASE_URL),
@@ -33,6 +36,9 @@ const routerMobile = createRouter({
                 { path:'/Mobile/Multimedia',component:AudioPage,meta: { title: '音乐' }},
                 { path:'/Mobile/Multimedia/Audio',component:AudioPage,meta: { title: '音乐' }},
                 { path:'/Mobile/Multimedia/Video',component:VideoPage,meta: { title: '视频' }},
+                { path:'/Mobile/Multimedia/Edit/Audio',component:AudioEditPage,meta: { title: '音乐编辑' }},
+                { path:'/Mobile/Multimedia/Edit/Video',component:VideoEditPage,meta: { title: '视频编辑' }},
+                { path:'/Mobile/Multimedia/detail/Video',component:VideoDetailPage,meta: { title: '视频播放' }},
         ]},
     ]
 });

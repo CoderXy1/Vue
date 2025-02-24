@@ -1,5 +1,6 @@
 <template>
-  <van-form @submit="onSubmit" style="padding-top: 2rem;padding-bottom: 3rem" :style="{backgroundColor:noteColor}">
+  <van-form @submit="onSubmit" style="padding-top: 2rem;padding-bottom: 3rem" :style="{backgroundColor:noteColor}"
+            :readonly="readOnly === 'true'">
     <van-cell-group inset >
       <van-field
           v-model="noteTitle"
@@ -38,7 +39,7 @@
       />
     </van-cell-group>
     <div style="margin: 16px;">
-      <van-button round block plain native-type="submit" :style="{color:noteColor}">
+      <van-button round block plain native-type="submit" :style="{color:noteColor}" :disabled="readOnly === 'true'">
         提交
       </van-button>
     </div>
@@ -59,6 +60,7 @@ export default {
       content : ref(''),
       noteColor : ref('#999999'),
       noteId : ref(this.$route.query.noteId),
+      readOnly : ref(this.$route.query.readOnly),
     }
   },methods:{
     onSubmit(values){

@@ -44,6 +44,8 @@ export default {
         { name: '便签', color: '#1989fa' },
         { name: '日记', color: '#1989fa' },
         { name: '文件', color: '#1989fa' },
+        { name: '音乐', color: '#1989fa' },
+        { name: '视频', color: '#1989fa' },
       ],
       showPopup : ref(false),
     };
@@ -53,11 +55,15 @@ export default {
       if (action.name === '相册') {
         this.$router.push({path:'/Mobile/Application/Edit/Gallery',query:{galleryId:''}});
       } else if (action.name === '便签') {
-        this.$router.push({path:'/Mobile/Application/Edit/Note',query:{noteId:''}});
+        this.$router.push({path:'/Mobile/Application/Edit/Note',query:{noteId:'',readOnly:'false'}});
       } else if (action.name === '日记') {
-        this.$router.push({path:'/Mobile/Application/Edit/Diary',query:{diaryId:''}});
+        this.$router.push({path:'/Mobile/Application/Edit/Diary',query:{diaryId:'',readOnly:'false'}});
       } else if (action.name === '文件') {
         this.$router.push({path:'/Mobile/Application/Edit/File'});
+      } else if (action.name === '音乐') {
+        this.$router.push({path:'/Mobile/multimedia/Edit/Audio',query:{audioId:'',readOnly:'false'}});
+      } else if (action.name === '视频') {
+        this.$router.push({path:'/Mobile/multimedia/Edit/Video',query:{videoId:'',readOnly:'false'}});
       }
       this.show = false; // 关闭 Actionsheet
     }

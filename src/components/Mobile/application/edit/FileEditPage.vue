@@ -1,8 +1,8 @@
 <template>
   <van-form @submit="onSubmit" style="padding-top: 2rem;padding-bottom: 3rem">
-    <van-field name="uploader" label="文件上传">
+    <van-field name="uploader" label="文件上传" required :rules="[{ required: true, message: '请选择文件' }]">
       <template #input>
-        <van-uploader v-model="files" accept="image/*,application/*,text/*,audio/*" max-count="4"/>
+        <van-uploader v-model="files" accept="image/*,application/*,text/*,audio/*,video/*" max-count="4"/>
       </template>
     </van-field>
     <div style="margin: 16px;">

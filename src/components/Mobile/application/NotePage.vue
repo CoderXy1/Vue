@@ -12,7 +12,7 @@
           @load="onLoad"
       >
         <van-swipe-cell v-for="note in noteList" :key="note" style="min-height: 3rem">
-            <van-cell :border="true" size="large"
+            <van-cell :border="true" size="large" @click="this.$router.push({path:'/Mobile/Application/Edit/Note',query:{noteId:note.noteId,readOnly:'true'}});"
                       :style="{ color: note.noteColor}">
               <template #title>
                 <van-icon name="label-o" class="label-o" />
@@ -26,7 +26,7 @@
               </template>
             </van-cell>
           <template #right>
-            <van-button style="height: 100%;" text="编辑" type="success" @click="this.$router.push({path:'/Mobile/Application/Edit/Note',query:{noteId:note.noteId}});"/>
+            <van-button style="height: 100%;" text="编辑" type="success" @click="this.$router.push({path:'/Mobile/Application/Edit/Note',query:{noteId:note.noteId,readOnly:'false'}});"/>
             <van-button style="height: 100%;" text="删除" type="danger" @click="deleteNote(note.noteId)"/>
           </template>
         </van-swipe-cell>

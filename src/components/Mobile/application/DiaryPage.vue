@@ -1,10 +1,5 @@
 <template>
   <div>
-<!--    <font-awesome-icon icon="cloud" :style="{color:'lightblue'}"></font-awesome-icon>-->
-<!--    <font-awesome-icon icon="sun" :style="{color:'orange'}"></font-awesome-icon>-->
-<!--    <font-awesome-icon icon="cloud-rain" :style="{color:'lightgray'}"></font-awesome-icon>-->
-<!--    <font-awesome-icon icon="cloud-sun"></font-awesome-icon>-->
-<!--    <font-awesome-icon icon="smog"></font-awesome-icon>-->
     <van-search v-model="searchKey" shape="round" placeholder="请输入日记关键词" @search="onSearch"/>
     <van-image-preview />
     <div style="padding-bottom: 3rem;margin-top: 0.3rem">
@@ -18,7 +13,7 @@
             @load="onLoad"
         >
           <van-swipe-cell v-for="diary in diaryList" :key="diary" style="min-height: 3rem">
-            <van-cell :border="true" size="large">
+            <van-cell :border="true" size="large" @click="this.$router.push({path:'/Mobile/Application/Edit/Diary',query:{diaryId:diary.diaryId,readOnly:'true'}});">
               <template #title>
                 <div class="flex-container">
                   <van-image
@@ -50,7 +45,7 @@
               </template>
             </van-cell>
             <template #right>
-              <van-button style="height: 100%;" text="编辑" type="success" @click="this.$router.push({path:'/Mobile/Application/Edit/Diary',query:{diaryId:diary.diaryId}});"/>
+              <van-button style="height: 100%;" text="编辑" type="success" @click="this.$router.push({path:'/Mobile/Application/Edit/Diary',query:{diaryId:diary.diaryId,readOnly:'false'}});"/>
               <van-button style="height: 100%;" text="删除" type="danger" @click="deleteDiary(diary.diaryId)"/>
             </template>
           </van-swipe-cell>
