@@ -20,11 +20,11 @@
                 </video>
               </div>
               <div style="width: 100%;margin-top: 5px">
-                <van-row   style="font-size: 16px">
+                <van-row  style="font-size: 16px">
                   <van-col span="15">
                     <van-text-ellipsis :content="video.title" rows="1" style="color: darkslateblue"/>
                   </van-col>
-                  <van-col span="6">
+                  <van-col span="6" style="font-size: 14px">
                     <span><van-icon name="orders-o"/>{{video.playCount}}</span>
                   </van-col>
                   <van-col span="3" style="text-align: right">

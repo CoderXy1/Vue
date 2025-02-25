@@ -5,6 +5,16 @@
         :options="playerOptions"
         :src="fileUrl" >
     </video-player>
+    <div style="margin-top: 1rem">
+      <van-row justify="center">
+        <van-col span="15">
+          <van-text-ellipsis :content="title" rows="1" style="color: darkslateblue"/>
+        </van-col>
+        <van-col span="6" >
+          <span><van-icon name="orders-o"/>{{playCount}}</span>
+        </van-col>
+      </van-row>
+    </div>
   </div>
 </template>
 
@@ -20,6 +30,7 @@ export default {
   data(){
     return {
       title : ref(''),
+      playCount : ref(0),
       fileUrl : ref(''),
       videoId : ref(this.$route.query.videoId),
       playerOptions : ref({
@@ -57,6 +68,7 @@ export default {
       }).then(response => {
         this.title = response.data.data.title;
         this.fileUrl = response.data.data.fileUrl;
+        this.playCount = response.data.data.playCount;
       }).catch(error => {
         showFailToast(error.message);
         console.error(error);

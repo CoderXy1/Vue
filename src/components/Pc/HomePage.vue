@@ -17,10 +17,13 @@
               <a class="nav-link tm-nav-link" href="#gallery">相册</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link tm-nav-link" href="#gallery">测试2</a>
+              <a class="nav-link tm-nav-link" href="#note">便签</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link tm-nav-link" href="#contact">测试3</a>
+              <a class="nav-link tm-nav-link" href="#diary">日记</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link tm-nav-link" href="#video">视频</a>
             </li>
           </ul>
         </div>
@@ -31,8 +34,8 @@
       <div class="tm-hero-text-container-inner">
         <h2 class="tm-hero-title">Aurora</h2>
         <p class="tm-hero-subtitle">
-          测试测试测试测试测试测试
-          <br />测试测试
+          Age can wither me
+          <br />岁月不饶人
         </p>
       </div>
     </div>
@@ -44,13 +47,13 @@
         <div class="text-center col-12">
           <h2 class="tm-text-primary tm-section-title mb-4">相册</h2>
           <p class="mx-auto tm-work-description">
-            记录美好生活
+            拍下精彩瞬间
           </p>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
-          <div class="mx-auto tm-gallery-container">
+          <div class="mx-auto tm-gallery-container" style="padding-top: 20px">
             <div class="grid tm-gallery" >
               <a v-for="(gallery, index) in galleryList" :key="index" :href="gallery.fileUrl" target="_blank">
                 <figure class="effect-honey tm-gallery-item" >
@@ -76,7 +79,7 @@
     </div>
   </section>
 
-  <section id="introduction" class="tm-section-pad-top">
+  <section id="note" class="tm-section-pad-top">
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
@@ -84,44 +87,66 @@
         </div>
         <div class="col-lg-6">
           <div class="tm-intro-text-container">
-            <h2 class="tm-text-primary mb-4 tm-section-title">测试1</h2>
-            <p class="mb-4 tm-intro-text">
-              测试测试<strong>测试测试</strong> 测试测试
+            <h2 class="tm-text-primary mb-4 tm-section-title">便签</h2>
+            <p class="mb-4 tm-intro-text" v-for="(note, index) in noteList" :key="index">
+              <strong>{{note.noteTitle}}</strong>
+              <van-text-ellipsis :content="note.content" rows="5" expand-text="展开" collapse-text="收起"/>
             </p>
-            <p class="mb-5 tm-intro-text">
-              测试测试
-              <a rel="nofollow" href="#">测试测试</a>测试测试</p>
-            <div class="tm-next">
-              <a href="#work" class="tm-intro-text tm-btn-primary">更多</a>
-            </div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="row tm-section-pad-top">
-        <div class="col-lg-4">
-          <i class="fas fa-4x fa-bus text-center tm-icon"></i>
-          <h4 class="text-center tm-text-primary mb-4">测试11</h4>
-          <p>
-            测试测试测试
+  <section id="diary" class="tm-section-pad-top" style="padding-top: 40px">
+    <div class="container">
+      <div class="row">
+        <div class="text-center col-12">
+          <h2 class="tm-text-primary tm-section-title mb-4">日记</h2>
+          <p class="mx-auto tm-work-description">
+            记录美好生活
           </p>
         </div>
-
-        <div class="col-lg-4 mt-5 mt-lg-0">
-          <i class="fas fa-4x fa-bicycle text-center tm-icon"></i>
-          <h4 class="text-center tm-text-primary mb-4">测试12</h4>
-          <p>
-            测试测试测试
+      </div>
+      <div class="row">
+        <div class="col-lg-3 mt-5 mt-lg-0" v-for="(diary, index) in diaryList" :key="index">
+            <el-image
+                class="img-fluid"
+                style="width: 400px; height: 220px"
+                :zoom-rate="1.2"
+                :max-scale="7"
+                :min-scale="0.2"
+                :src="diary.fileUrl"
+                show-progress
+                fit="cover"
+            />
+          <h4 class="text-center tm-text-primary mb-4">{{ diary.title }}</h4>
+          <p style="min-height: 100px">
+            {{ diary.content }}
           </p>
         </div>
-        <div class="col-lg-4 mt-5 mt-lg-0">
-          <i class="fas fa-4x fa-city text-center tm-icon"></i>
-          <h4 class="text-center tm-text-primary mb-4">测试13</h4>
-          <p>
-            Donec vestibulum libero nisl. Curabitur ac orci ac lorem blandit
-            volutpat. Sed ac sodales nibh, ut porttitor elit. Sed id dui mi.
-            Vestibulum ante ipsum primis in faucibus.
+      </div>
+    </div>
+  </section>
+
+  <section id="video" class="tm-section-pad-top" style="padding-top: 40px;padding-bottom: 20px">
+    <div class="container">
+      <div class="row">
+        <div class="text-center col-12">
+          <h2 class="tm-text-primary tm-section-title mb-4">视频</h2>
+          <p class="mx-auto tm-work-description">
+            放映昨日时光
           </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 mt-5 mt-lg-0" v-for="(video, index) in videoList" :key="index">
+          <video-player
+              class="video-player"
+              :options="playerOptions"
+              :src="video.fileUrl" >
+          </video-player>
+          <h5 class="text-center tm-text-primary mb-4">{{ video.title }}</h5>
         </div>
       </div>
     </div>
@@ -132,41 +157,13 @@
     <div class="container tm-container-contact">
       <div class="row">
         <div class="col-12">
-          <h2 class="mb-4 tm-section-title">Contact Us</h2>
+          <h2 class="mb-4 tm-section-title">Totoro</h2>
           <div class="mb-5 tm-underline">
             <div class="tm-underline-inner"></div>
           </div>
           <p class="mb-5">
-            Nullam tincidunt, lacus a suscipit luctus, elit turpis tincidunt dui,
-            non tempus sem turpis vitae lorem. Maecenas eget odio in sapien ultrices
-            viverra vitae vel leo. Curabitur at elit eu risus pharetra pellentesque
-            at at velit.
+            人生一世 草木一秋
           </p>
-        </div>
-
-        <div class="col-sm-12 col-md-6 d-flex align-items-center tm-contact-item">
-          <a href="tel:0100200340" class="tm-contact-item-link">
-            <i class="fas fa-3x fa-phone mr-4"></i>
-            <span class="mb-0">010-020-0340</span>
-          </a>
-        </div>
-        <div class="col-sm-12 col-md-6 d-flex align-items-center tm-contact-item">
-          <a href="mailto:info@company.co" class="tm-contact-item-link">
-            <i class="fas fa-3x fa-envelope mr-4"></i>
-            <span class="mb-0">info@company.co</span>
-          </a>
-        </div>
-        <div class="col-sm-12 col-md-6 d-flex align-items-center tm-contact-item">
-          <a href="#" class="tm-contact-item-link">
-            <i class="fas fa-3x fa-map-marker-alt mr-4"></i>
-            <span class="mb-0">Location on Maps</span>
-          </a>
-        </div>
-        <div class="col-sm-12 col-md-6 d-flex align-items-center tm-contact-item">
-          <form action="" method="get">
-            <input name="email" type="email" placeholder="Subscribe your email" class="tm-input" required />
-            <button type="submit" class="btn tm-btn-submit">Submit</button>
-          </form>
         </div>
       </div>
     </div>
@@ -177,6 +174,7 @@
 </template>
 
 <script>
+import {ref} from "vue";
 import $ from 'jquery';
 import axios from 'axios';
 import config from "@/config";
@@ -185,19 +183,67 @@ export default {
   name: 'HomePage',
   data(){
     return {
-      galleryList : [],
+      galleryList : ref([]),
+      diaryList : ref([]),
+      noteList : ref([]),
+      videoList : ref([]),
+      params : {
+        pageNum : 1,
+        pageSize : 4,
+        searchKey : '',
+      },
+      playerOptions : ref({
+        playbackRates: [0.7, 1.0, 1.5, 2.0], // 播放速度
+        autoplay: false, // 如果true,浏览器准备好时开始回放。
+        muted: true, // 默认情况下将会消除任何音频。
+        loop: true, // 导致视频一结束就重新开始。
+        preload: 'auto', // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
+        language: 'zh-CN',
+        aspectRatio: '16:9', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
+        fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
+        notSupportedMessage: '此视频暂无法播放，请稍后再试', // 允许覆盖Video.js无法播放媒体源时显示的默认信息。
+        controls: true,
+        controlBar: {
+          timeDivider: true,
+          durationDisplay: true,
+          remainingTimeDisplay: false,
+          fullscreenToggle: true // 全屏按钮
+        }
+      })
     };
   },
   methods: {
     getGalleryList(){
-      const params = {
-        pageNum : 1,
-        pageSize : 4,
-        searchKey : '',
-      }
-      axios.post(config.apiBaseUrl+'/gallery/queryList',params)
+      axios.post(config.apiBaseUrl+'/gallery/queryList',this.params)
           .then(response => {
             this.galleryList = response.data.data;
+          })
+          .catch(error => {
+            console.error(error);
+          })
+    },
+    getDiaryList(){
+      axios.post(config.apiBaseUrl+'/diary/queryList',this.params)
+          .then(response => {
+            this.diaryList = response.data.data;
+          })
+          .catch(error => {
+            console.error(error);
+          })
+    },
+    getNoteList(){
+      axios.post(config.apiBaseUrl+'/note/queryList',this.params)
+          .then(response => {
+            this.noteList = response.data.data;
+          })
+          .catch(error => {
+            console.error(error);
+          })
+    },
+    getVideoList(){
+      axios.post(config.apiBaseUrl+'/video/queryList',this.params)
+          .then(response => {
+            this.videoList = response.data.data;
           })
           .catch(error => {
             console.error(error);
@@ -206,6 +252,9 @@ export default {
   },
   mounted() {
     this.getGalleryList();
+    this.getNoteList();
+    this.getDiaryList();
+    this.getVideoList();
   }
 }
 
