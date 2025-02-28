@@ -21,7 +21,7 @@
         <van-tabbar-item icon="home-o" to="/Mobile/Home">首页</van-tabbar-item>
         <van-tabbar-item icon="apps-o" to="/Mobile/Application">应用</van-tabbar-item>
         <van-tabbar-item icon="music-o" to="/Mobile/Multimedia">媒体</van-tabbar-item>
-        <van-tabbar-item icon="contact-o" to="/Mobile/Ai">我的</van-tabbar-item>
+        <van-tabbar-item icon="chat-o" to="/Mobile/AiChat">AI</van-tabbar-item>
       </van-tabbar>
     </keep-alive>
     <van-action-sheet v-model:show="show" cancel-text="取消" :actions="actions" @select="onSelect" title="新增" />

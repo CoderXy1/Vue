@@ -15,7 +15,7 @@ import VideoPage from '@/components/Mobile/multimedia/VideoPage.vue';
 import AudioEditPage from '@/components/Mobile/multimedia/edit/AudioEditPage.vue';
 import VideoEditPage from '@/components/Mobile/multimedia/edit/VideoEditPage.vue';
 import VideoDetailPage from '@/components/Mobile/multimedia/detail/VideoDetailPage.vue';
-import AiPage from '@/components/Mobile/ai/AiPage.vue';
+import AiChatPage from '@/components/Mobile/aichat/AiChatPage.vue';
 
 const routerMobile = createRouter({
     history : createWebHistory(process.env.BASE_URL),
@@ -41,7 +41,7 @@ const routerMobile = createRouter({
                 { path:'/Mobile/Multimedia/Edit/Video',component:VideoEditPage,meta: { title: '视频编辑' }},
                 { path:'/Mobile/Multimedia/detail/Video',component:VideoDetailPage,meta: { title: '视频播放' }},
         ]},
-        { path:'/Mobile/Ai',component:AiPage,meta: { title: 'AI' }},
+        { path:'/Mobile/AiChat',component:AiChatPage,meta: { title: 'AIChat' }},
     ]
 });
 
