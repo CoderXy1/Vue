@@ -58,7 +58,9 @@
         <span style="font-size: 10px">{{formatDate(diary.createDate)}}</span>
       </template>
       <template #label>
-        <van-text-ellipsis style="width: 15rem" expand-text="展开" collapse-text="收起"  :content="diary.content" rows="2" />
+        <div class="step" @click.stop>
+          <van-text-ellipsis style="width: 15rem" expand-text="展开" collapse-text="收起"  :content="diary.content" rows="2" />
+        </div>
       </template>
     </van-cell>
   </van-cell-group>
