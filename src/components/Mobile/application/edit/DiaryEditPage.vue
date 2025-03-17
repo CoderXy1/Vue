@@ -15,11 +15,15 @@
       <van-field
           v-model="content"
           name="content"
+          type="textarea"
+          rows="5"
           label="内容"
           placeholder="内容"
           :rules="[{ required: true, message: '请填写内容' }]"
           autocomplete="off"
           :clearable=true
+          maxlength="250"
+          show-word-limit
           autosize
           required
       />
