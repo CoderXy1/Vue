@@ -1,5 +1,5 @@
 <template>
-  <van-form @submit="onSubmit" style="margin-top: 1rem" :readonly="readOnly === 'true'">
+  <van-form @submit="onSubmit" style="margin-top: 1rem;padding-bottom: 3rem" :readonly="readOnly === 'true'">
     <van-cell-group inset>
       <van-field
           v-model="title"
